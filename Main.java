@@ -1,6 +1,16 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args){
-        GUI newGUI = new GUI();
-        newGUI.startUp();
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user for person's name
+        System.out.println("Please enter your valentine's name:");
+
+        String valentine = scanner.nextLine();
+
+        createGUI newGUI = new createGUI();
+
+        newGUI.startUp(valentine);
     }
 }

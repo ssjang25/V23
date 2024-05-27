@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 
-public class GUI implements ActionListener {
+public class createGUI implements ActionListener {
     private static JPanel window;
     private static JPanel panel;
     private static JFrame frame;
@@ -42,7 +42,7 @@ public class GUI implements ActionListener {
     private static JLabel and2;
     private static JLabel hyperlink2;
 
-    public GUI(){
+    public createGUI(){
         window = new JPanel(new BorderLayout());
         panel = new JPanel(new BorderLayout());
         frame = new JFrame();
@@ -50,7 +50,7 @@ public class GUI implements ActionListener {
         loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
     }
 
-    public void startUp(){
+    public void startUp(String valentine){
         //Cancel and continue buttons 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         cancel = new JButton(new AbstractAction("Cancel") {
@@ -120,7 +120,7 @@ public class GUI implements ActionListener {
 
         //introduction text
         frame.getContentPane();
-        String text2 = " " + "The Valentines Day desktop client aims to ask Alexis Cayabyab <br/> about his plans for Valentines Day. On Feburary 14th will be the <br/> second Valentines Day we are spending together. Have you had <br/> enough of me yet? <br/> <br/> <br/> <br/> By clicking “Continue”, you agree to my ";
+        String text2 = " " + "Ask-A-Valentine aims to ask "+ valentine +" about their plans for <br/> Valentines Day. Do you wish to continue? <br/> <br/> <br/> <br/> By clicking “Continue”, you agree to my ";
         t2 = new JLabel("<html>"+text2+"</html>");
         t2.setFont(new Font("SF Pro", Font.PLAIN, 13));
         Dimension size = t2.getPreferredSize();
@@ -135,19 +135,19 @@ public class GUI implements ActionListener {
         hyperlink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         hyperlink.setFont(new Font("SF Pro", Font.PLAIN, 13));
         Dimension hyperSize = hyperlink.getPreferredSize();
-        hyperlink.setBounds(261, 117, hyperSize.width, hyperSize.height);
+        hyperlink.setBounds(261, 85, hyperSize.width, hyperSize.height);
         hyperlink.addMouseListener(new YourMouseListener(hyperlink, "https://www.youtube.com/shorts/Y5Qx4YFnHsM", hyper));
         and2 = new JLabel(and);
         and2.setFont(new Font("SF Pro", Font.PLAIN, 13));
         Dimension s2 = t2.getPreferredSize();
-        and2.setBounds(369, 61, s2.width, s2.height);
+        and2.setBounds(369, 45, s2.width, s2.height);
 
         hyperlink2 = new JLabel(hyper2);
         hyperlink2.setFont(new Font("SF Pro", Font.PLAIN, 13));
         hyperlink2.setForeground(Color.BLUE.darker());
         hyperlink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         Dimension s = hyperlink2.getPreferredSize();
-        hyperlink2.setBounds(10, 134, s.width, s.height);
+        hyperlink2.setBounds(10, 100, s.width, s.height);
 
         hyperlink2.addMouseListener(new YourMouseListener(hyperlink2, "https://www.youtube.com/shorts/Q26EhYwQvMg", hyper2));
 
@@ -222,7 +222,7 @@ public class GUI implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 if (answer1.getText().equalsIgnoreCase("No") && answer2.getText().equalsIgnoreCase("Yes") && answer3.getText().equalsIgnoreCase("Yes")){
                     //If wrong answer message exists, remove it from panel
-                    if (GUI.wrong != null){
+                    if (createGUI.wrong != null){
                         //wrong.setVisible(false);
                         removeComponent(wrong);
                     }
@@ -234,7 +234,7 @@ public class GUI implements ActionListener {
                     answer3.setText("");
 
                     //Wrong answer message
-                    wrong = new JLabel("<html>"+" 💢 PABO!! Try again."+"</html>");
+                    wrong = new JLabel("<html>"+" 💢 Wrong!! Try again."+"</html>");
                     wrong.setForeground(Color.red);
                     wrong.setFont(new Font("SF Pro", Font.PLAIN, 13));
                     Dimension size = wrong.getPreferredSize();
@@ -343,10 +343,10 @@ public class GUI implements ActionListener {
         AbstractAction checkAnswer = new AbstractAction("Finish"){
             @Override
             public void actionPerformed(ActionEvent e) {
-                ImageIcon icon = new ImageIcon(GUI.class.getResource("rilly lilly.jpg"));
+                ImageIcon icon = new ImageIcon(createGUI.class.getResource("rilly lilly.jpg"));
                 BufferedImage img = null;
                 try {
-                    img = ImageIO.read(GUI.class.getResource("rilly lilly.jpg"));
+                    img = ImageIO.read(createGUI.class.getResource("rilly lilly.jpg"));
                 } catch (IOException i){
                     i.printStackTrace();
                 }
